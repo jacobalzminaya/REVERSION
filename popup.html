@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>CMD·AI</title>
+<style>
+* { box-sizing:border-box; margin:0; padding:0; }
+body { width:220px; background:#060608; color:#e0e0e0; font-family:'Courier New',monospace; font-size:11px; }
+.header { background:#0d0d0d; padding:10px 12px; border-bottom:1px solid #1a1a1a; display:flex; justify-content:space-between; align-items:center; }
+.header-title { font-size:13px; font-weight:bold; color:#fff; letter-spacing:.1em; }
+.header-status { font-size:10px; color:#555; }
+.header-status.on { color:#4caf50; }
+.section { padding:8px 12px; border-bottom:1px solid #111; }
+.row { display:flex; justify-content:space-between; align-items:center; margin-bottom:3px; }
+.row:last-child { margin-bottom:0; }
+.lbl { color:#555; font-size:10px; }
+.val { color:#ccc; font-size:10px; text-align:right; }
+.val.green { color:#4caf50; }
+.val.cyan  { color:#18ffff; }
+.val.white { color:#fff; font-weight:bold; }
+.val.gold  { color:#ffc400; }
+.btn-row { padding:10px 12px; }
+.btn { width:100%; padding:8px; border:1px solid #333; border-radius:6px; background:#111; color:#888; font-family:'Courier New',monospace; font-size:11px; cursor:pointer; text-align:center; transition:all .2s; }
+.btn:hover { border-color:#555; color:#ccc; }
+.btn.active { border-color:#4caf50; color:#4caf50; background:#0a1a0a; }
+.btn.stop   { border-color:#f44336; color:#f44336; background:#1a0a0a; }
+.tf-row { padding:5px 12px; display:flex; align-items:center; gap:6px; border-bottom:1px solid #111; }
+.tf-lbl { color:#444; font-size:9px; }
+.tf-btns { display:flex; gap:4px; flex:1; }
+.tf-btn { flex:1; padding:3px 0; border:1px solid #222; border-radius:3px; background:#0d0d0d; color:#444; font-family:'Courier New',monospace; font-size:9px; cursor:pointer; text-align:center; }
+.tf-btn.active { border-color:#18ffff; color:#18ffff; background:#051515; }
+</style>
+</head>
+<body>
+<div class="header">
+  <div class="header-title">CMD·AI</div>
+  <div class="header-status" id="h-status">● INACTIVO</div>
+</div>
+
+<div class="section">
+  <div class="row"><span class="lbl">Balance</span><span class="val green" id="v-balance">–</span></div>
+  <div class="row"><span class="lbl">Payout</span><span class="val" id="v-payout">–</span></div>
+  <div class="row"><span class="lbl">Activo</span><span class="val white" id="v-asset">–</span></div>
+  <div class="row"><span class="lbl">Velas</span><span class="val cyan" id="v-count">–</span></div>
+</div>
+
+<div class="tf-row">
+  <span class="tf-lbl">TF</span>
+  <div class="tf-btns">
+    <button class="tf-btn" data-tf="5">5s</button>
+    <button class="tf-btn" data-tf="10">10s</button>
+    <button class="tf-btn" data-tf="15">15s</button>
+    <button class="tf-btn" data-tf="30">30s</button>
+    <button class="tf-btn active" data-tf="60">1m</button>
+  </div>
+</div>
+
+<div class="btn-row">
+  <button class="btn" id="btn-toggle">▶ ACTIVAR</button>
+</div>
+
+<script src="popup.js"></script>
+</body>
+</html>

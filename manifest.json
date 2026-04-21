@@ -1,0 +1,78 @@
+{
+  "manifest_version": 3,
+  "name": "CMD\u00b7AI \u2014 Pocket Option Bridge",
+  "version": "7.0",
+  "description": "Data Viewer en tiempo real. Muestra balance, velas, live tick, spread, sesion y correlaciones de Pocket Option.",
+  "permissions": [
+    "activeTab",
+    "scripting",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": [
+    "*://po.market/*",
+    "*://*.po.market/*",
+    "*://pocketoption.com/*",
+    "*://*.pocketoption.com/*",
+    "https://trading.po.market/*",
+    "<all_urls>"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "*://po.market/*",
+        "*://*.po.market/*",
+        "*://pocketoption.com/*",
+        "*://*.pocketoption.com/*",
+        "https://trading.po.market/*"
+      ],
+      "js": [
+        "interceptor.js"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "matches": [
+        "*://po.market/*",
+        "*://*.po.market/*",
+        "*://pocketoption.com/*",
+        "*://*.pocketoption.com/*",
+        "https://trading.po.market/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "icon16.png",
+    "48": "icon48.png"
+  },
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "pre_analisis.html",
+        "pre_analisis.js",
+        "index.html",
+        "*.js",
+        "*.css",
+        "*.png"
+      ],
+      "matches": [
+        "<all_urls>"
+      ]
+    }
+  ]
+}
